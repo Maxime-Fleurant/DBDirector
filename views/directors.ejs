@@ -29,11 +29,11 @@
     
     <div class="container h-100 " style="padding-bottom: 40px;">
         <div class="" >
-            <a class="titll " href="http://localhost:3000"><%= title %></a>
+            <a class="titll " href="http://thebrutalistdb.com"><%= title %></a>
 
             <p >Welcome to <%= title %></p>
             <p >Number Of Director : <%= directList.length %></p>
-            <form action="http://localhost:3000/query" style="margin-bottom:20px">
+            <form action="http://thebrutalistdb.com/query" style="margin-bottom:20px">
 
                 <select name="lang">
                     <% for (i in langs) { %>
@@ -64,7 +64,7 @@
                 <div class="col-12 col-sm-6 col-md-3 mh-100 dsfd" style="">
 
                     <div style="font-weight: bold">
-                        <a target="_blank"  href="http://localhost:3000/director?director=<%= director.id %>"><%= director.name %> <%= director.seen ? "." : null %> </a>
+                        <a target="_blank"  href="http://thebrutalistdb.com/director?director=<%= director.id %>"><%= director.name %>  </a>
                     </div>
                     
                 </div>
