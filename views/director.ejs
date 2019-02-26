@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <style>
+
+        
+        </style>
+
+    <link rel='stylesheet' type="text/css" href='/stylesheets/bfx.css' />
+    <link rel='stylesheet' type="text/css" href='/stylesheets/animations.css' />
+    <link rel='stylesheet' type="text/css" href='/stylesheets/flavors.css' />
+    <link rel='stylesheet' type="text/css" href='/stylesheets/butch.css' />
+
+</head>
+
+<body>
+
+    <div class="container h-100" style="padding-bottom: 40px;"4>
+        <div class="row">
+            <div class="col-12" style="">
+                <a class="titll" href="http://localhost:3000/"><%= title %></a>
+
+                <p >Welcome to <%= title %></p>
+
+                <form action="http://localhost:3000/query" style="margin-bottom:20px">
+
+                    <select name="lang">
+                        <% for (i in langs) { %>
+
+                            <option value="<%= i %>"><%= langs[i] %></option>
+
+                        <%}%>
+                    </select>
+
+                    <select name="year">
+                        <% for (i of years) { %>
+
+                            <option value="<%= i %>"><%= i %></option>
+
+                        <%}%>
+                    </select>
+
+                    <input type="submit" name="validation"  class="go" style="border-radius: 7px;">
+
+                </form>
+
+                <p class="" style="font-size:30px; font-weight:bold; margin-bottom: 40px;"><%= director.name %><form action="http://localhost:3000/check?id=<%= director.id %>"><input type="submit" name="id" value="<%= director.id %>"></form></p>
+
+            </div>
+
+            <div class="container">
+                <div class="row">
+                
+                    <% for (movie of movies) { %>
+
+                        <div class="col-12 col-sm-6 col-md-3 mh-100 todis" style="margin-bottom:40px"  filmid="<%= movie.id %>">
+
+                        <% if (movie.poster_path) { %>
+
+                            <img class="hovi " filmid="<%= movie.id %>" triig="false"  src="https://image.tmdb.org/t/p/original/<%= movie.poster_path %>" alt="" width="100%">
+
+                        <%} else {%>
+
+                            <img class="hovi " filmid="<%= movie.id %>" triig="false" style="margin-bottom:40px;" src="https://www.tate.org.uk/art/images/work/L/L01/L01682_10.jpg" alt="" width="100%">
+
+                        <% } %>
+
+                        </div>
+                            
+                    <%}%>
+
+                    <div class="col-12 col-sm-6" >
+
+                    <% for (movie of movies) { %>
+
+                        <div style="display:none; text-align:center" class="col-12" class="open" filmidff="<%= movie.id %>">
+
+                            <img  style="margin-bottom:40px;" src="https://image.tmdb.org/t/p/original/<%= movie.backdrop_path %>" alt="" width="100%">
+                            <a class="trailerbutton" style="padding: 10px 30px; border:1px solid black; font-weight:bold" target="_blank" href="https://youtube.com/results?search_query=trailer+<%= new Date(movie.release_date).getFullYear() %>+<%= movie.title %>" >Trailer</a>
+
+                        </div>
+
+                        <div style="display:none; margin-bottom:40px; margin-top:40px" class="col-12" style="" class="open" filmidff="<%= movie.id %>">
+                            
+                            <p><span style="font-weight:bold">Original Title</span> : <%= movie.original_title %></p>
+                            <p><span style="font-weight:bold">Title</span> : <%= movie.title %></p>
+                            <p><span style="font-weight:bold">Date</span> : <%= new Date(movie.release_date).getFullYear() %></p>
+                            <p style="text-align:justify" ><span style="font-weight:bold;">Overview</span> : <%= movie.overview %></p>
+
+                        </div>
+
+                        
+                            
+                    <%}%>
+
+                </div>
+
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+
+
+
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        
+        $(".hovi").click((event) => {
+
+            if ($(event.target).attr("triig") == "false") {
+
+                let filmId = $(event.target).attr("filmid");
+                $(event.target).parent().removeClass("todis");
+                $(event.target).parent().removeClass("col-md-3");
+                $(event.target).addClass("fff");
+                $(".todis").hide();
+                $(`[filmidff=${filmId}]`).show();
+                $(event.target).attr("triig", "true");
+
+            } else {
+
+                let filmId = $(event.target).attr("filmid");
+                $(event.target).parent().addClass("todis");
+                $(event.target).parent().addClass("col-md-3");
+                $(".todis").show();
+                $(`[filmidff=${filmId}]`).hide();
+                $(event.target).attr("triig", "false");
+
+            }      
+
+        });
+
+    </script>
+
+    <script src="/javascripts/start.brutalizing.js"></script>
+    <script src="/javascripts/brutalist.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' type="text/css" href='/stylesheets/bfx.css' />
+    <link rel='stylesheet' type="text/css" href='/stylesheets/animations.css' />
+    <link rel='stylesheet' type="text/css" href='/stylesheets/flavors.css' />
+    <link rel='stylesheet' type="text/css" href='/stylesheets/butch.css' />
+    <style>
+
+        .dsfd{
+            cursor: pointer
+        }
+
+        .dsfd:hover {
+            color:grey
+            
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    
+    <div class="container h-100 " style="padding-bottom: 40px;">
+        <div class="" >
+            <a class="titll " href="http://localhost:3000/"><%= title %></a>
+
+            <p >Welcome to <%= title %></p>
+            <p >Number Of Director : <%= directList.length %></p>
+            <form action="http://localhost:3000/query" style="margin-bottom:20px">
+
+                <select name="lang">
+                    <% for (i in langs) { %>
+
+                        <option value="<%= i %>"><%= langs[i] %></option>
+
+                    <%}%>
+                </select>
+
+                <select name="year">
+                    <% for (i of years) { %>
+
+                        <option value="<%= i %>"><%= i %></option>
+
+                    <%}%>
+                </select>
+
+                <input type="submit" name="validation"  class="go" style="border-radius: 7px;">
+
+            </form>
+            
+        </div>
+
+        <div class="row h-100">
+
+            <% for (director of directList) { %>
+
+                <div class="col-12 col-sm-6 col-md-3 mh-100 dsfd" style="">
+
+                    <div style="font-weight: bold">
+                        <a target="_blank"  href="http://localhost:3000/director?director=<%= director.id %>"><%= director.name %> <%= director.seen ? "." : null %> </a>
+                    </div>
+                    
+                </div>
+
+            <% }%>
+
+        </div>
+        
+
+    </div>
+
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <script src="/javascripts/start.brutalizing.js"></script>
+    <script src="/javascripts/brutalist.js"></script>
+    
+
+</body>
+
+</html>
